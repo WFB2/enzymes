@@ -17,7 +17,7 @@ for (j in 1:length(files)){
 }
 
 standard <- data.table::rbindlist(standard) %>% as_tibble()
-
+standard <- standard %>% filter(Station != 4 & Station != 5) 
 standard %>%
   group_by(Station, Standard) %>% 
   ggplot(aes(y = gain3, x = concentration, color = Standard))+
@@ -25,8 +25,7 @@ standard %>%
   geom_smooth(method = "lm")+
   facet_wrap(~Station)
 
-standard %>% 
-  lm(data= .,concentration) %>% summary()
+
 library(broom)
 Gain1 <- standard %>% group_by(Station,Standard) %>% do(tidy(lm(data= .,gain1~concentration))) %>% 
   select(Station,Standard,estimate,term) %>% 

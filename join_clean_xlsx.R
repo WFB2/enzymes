@@ -15,8 +15,9 @@ enz <- list()
 for (j in 1:length(files)){
   enz[[j]] <- read_excel(files[j], sheet = 1)
 }
-enz[[2]] <- remove()
+#enz[[2]] <- remove()
 enz <- data.table::rbindlist(enz) %>% as_tibble()
 
 write.xlsx2(enz, "Enzymes_full.xlsx", sheetName = "Sheet1",
             col.names = T, row.names = T, append = F)        
+enz %>% filter(Station == 10)
