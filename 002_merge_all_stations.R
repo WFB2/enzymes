@@ -17,7 +17,7 @@ for (j in 1:length(files)){
 }
 enz <- data.table::rbindlist(enz) %>% as_tibble()
 
-### add target depth from flowcytometry data
+### add target depth from flowcytometry data --- not working yet
 
 # Flow_depth <- read_excel("../../FlowCyto/Phytoplankton SO287.xlsx",sheet = 2)
 # 
